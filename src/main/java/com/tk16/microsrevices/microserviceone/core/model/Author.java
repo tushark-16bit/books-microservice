@@ -1,5 +1,7 @@
 package com.tk16.microsrevices.microserviceone.core.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -11,13 +13,15 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long authorId;
     private String fullName;
-    @OneToMany(mappedBy = "author",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "author")
+    @JsonIgnore
     private List<Book> authoredBooks;
 
     public Author() {
     }
 
-    public Author(String fullName) {
+    public Author(long authorId, String fullName) {
+        this.authorId = authorId;
         this.fullName = fullName;
     }
 
