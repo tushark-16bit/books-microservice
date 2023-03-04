@@ -1,8 +1,9 @@
 package com.tk16.microsrevices.microserviceone.core.ports;
 
 import com.tk16.microsrevices.microserviceone.core.model.Book;
+import reactor.core.publisher.Mono;
 
 public interface BookDatabase {
 
-    Long save(Book book);
+    Mono<Long> save(Book book);
 }

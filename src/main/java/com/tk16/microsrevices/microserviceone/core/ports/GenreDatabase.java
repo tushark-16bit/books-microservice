@@ -1,8 +1,9 @@
 package com.tk16.microsrevices.microserviceone.core.ports;
 
 import com.tk16.microsrevices.microserviceone.core.model.Genre;
+import reactor.core.publisher.Mono;
 
 public interface GenreDatabase {
 
-    Long save(Genre genre);
+    Mono<Long> save(Genre genre);
 }
