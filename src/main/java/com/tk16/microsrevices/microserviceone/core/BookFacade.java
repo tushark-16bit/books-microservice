@@ -1,4 +1,4 @@
 package com.tk16.microsrevices.microserviceone.core;
 
-public class UserFacade {
+public class BookFacade {
 }

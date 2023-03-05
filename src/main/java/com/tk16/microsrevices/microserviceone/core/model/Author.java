@@ -49,4 +49,14 @@ public class Author {
             List<Book> authoredBooks) {
         this.authoredBooks = authoredBooks;
     }
+
+    @Override public boolean equals(Object obj) {
+
+        if(obj instanceof Author) {
+            var object = (Author) obj;
+            if(object.getAuthorId() == this.authorId &&
+            object.fullName.equals(this.fullName)) return true;
+        }
+        return false;
+    }
 }

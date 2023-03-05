@@ -6,18 +6,27 @@ import com.tk16.microsrevices.microserviceone.infrastructure.repositories.Author
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class AuthorDatabaseAdapter implements AuthorDatabase {
 
     @Autowired
     AuthorRepository repository;
 
-    @Override public Long save(Author author) {
-        var savedEntity = repository.save(author);
-        return savedEntity.getAuthorId();
+    @Override public Author save(Author author) {
+        return repository.save(author);
     }
 
     @Override public Author findById(Long id) {
         return repository.findById(id).orElse(null);
+    }
+
+    @Override public Author findByName(String name) {
+        return repository.findFirstByFullName(name);
+    }
+
+    @Override public List<Author> findAll() {
+        return repository.findAll();
     }
 }
