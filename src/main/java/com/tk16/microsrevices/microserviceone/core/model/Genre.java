@@ -1,6 +1,8 @@
 package com.tk16.microsrevices.microserviceone.core.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.Fetch;
 
 import java.util.List;
@@ -11,6 +13,8 @@ public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long genreId;
+    @NotBlank(message = "Name must not be blank")
+    @Size(min = 2, max = 30)
     private String genreName;
     @OneToMany(mappedBy = "genre", fetch = FetchType.LAZY)
     private List<Book> books;

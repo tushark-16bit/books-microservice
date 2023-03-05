@@ -8,11 +8,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
-public class AuthorDatabaseAdapter implements AuthorDatabase {
+@Component public class AuthorDatabaseAdapter implements AuthorDatabase {
 
-    @Autowired
-    AuthorRepository repository;
+    @Autowired AuthorRepository repository;
 
     @Override public Author save(Author author) {
         return repository.save(author);

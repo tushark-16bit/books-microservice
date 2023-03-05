@@ -3,6 +3,8 @@ package com.tk16.microsrevices.microserviceone.core.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
@@ -12,6 +14,8 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long authorId;
+    @NotBlank(message = "Name must not be blank")
+    @Size(min = 2, max = 30)
     private String fullName;
     @OneToMany(mappedBy = "author")
     @JsonIgnore
