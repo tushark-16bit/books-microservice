@@ -8,13 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
-public class UserController {
+@RestController public class UserController {
 
     @Autowired AuthorFacade authorFacade;
 
-    @GetMapping("/user/author")
-    public List<Author> getAllAuthors() {
+    @GetMapping("/user/author") public List<Author> getAllAuthors() {
         return authorFacade.findAllAuthors();
     }
 }
