@@ -3,28 +3,27 @@ package com.tk16.microsrevices.microserviceone.core.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-@Entity
-public class Book {
+import java.math.BigDecimal;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long bookId;
+@Entity public class Book {
+
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE) private long bookId;
     private String title;
     private String description;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Author author;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
-    private Genre genre;
+    @ManyToOne(fetch = FetchType.EAGER) private Author author;
+    @ManyToOne(fetch = FetchType.EAGER) private Genre genre;
     private double rating;
+    private BigDecimal price;
 
     public Book() {
     }
 
-    public Book(String title, String description, double rating) {
+    public Book(String title, String description, double rating,
+                BigDecimal price) {
         this.title = title;
         this.description = description;
         this.rating = rating;
+        this.price = price;
     }
 
     public long getBookId() {
@@ -55,8 +54,7 @@ public class Book {
         return author;
     }
 
-    public void setAuthor(
-            Author author) {
+    public void setAuthor(Author author) {
         this.author = author;
     }
 
@@ -74,5 +72,13 @@ public class Book {
 
     public void setRating(double rating) {
         this.rating = rating;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 }
