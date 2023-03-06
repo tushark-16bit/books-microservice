@@ -23,6 +23,4 @@ public class GenreFacade {
         public Genre findGenreById(Long id) {
             return database.findById(id);
         }
-
-
 }

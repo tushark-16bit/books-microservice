@@ -1,5 +1,6 @@
 package com.tk16.microsrevices.microserviceone.core.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -17,6 +18,7 @@ public class Genre {
     @Size(min = 2, max = 30)
     private String genreName;
     @OneToMany(mappedBy = "genre", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Book> books;
 
     public Genre() {

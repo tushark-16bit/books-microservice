@@ -28,7 +28,7 @@ class AuthorControllerTest {
         when(facade.addToAuthors(requestAuthor))
                 .thenReturn(requestAuthor);
         mockMvc.perform(
-                        post("/admin/author")
+                        post("/user/author")
                                 .content(objectMapper.writeValueAsString(requestAuthor))
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .accept(MediaType.APPLICATION_JSON)
@@ -37,6 +37,23 @@ class AuthorControllerTest {
                         status().isCreated(),
                         content().contentType(MediaType.APPLICATION_JSON_VALUE),
                         jsonPath("$.authorId").exists()
+                );
+    }
+
+    @Test
+    void addAuthor_FailValidation() throws Exception {
+        Author requestAuthor = new Author(1, "T");
+        when(facade.addToAuthors(requestAuthor))
+                .thenReturn(requestAuthor);
+        mockMvc.perform(
+                        post("/user/author")
+                                .content(objectMapper.writeValueAsString(requestAuthor))
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .accept(MediaType.APPLICATION_JSON)
+                )
+                .andExpectAll(
+                        status().isBadRequest(),
+                        content().contentType(MediaType.APPLICATION_JSON_VALUE)
                 );
     }
 }

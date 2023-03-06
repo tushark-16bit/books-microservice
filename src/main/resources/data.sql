@@ -24,3 +24,17 @@ values(3, 'Sci-Fi');
 
 Insert into genre (genre_id, genre_name)
 values(4, 'Literature');
+
+Insert into book (book_id, title, description, rating, author_author_id,
+genre_genre_id, price)
+values(1, 'Harry Potter And The Philosopher Stone', 'Best Book', 4, 3, 2, 200);
+
+Insert into book (book_id, title, description, rating, author_author_id,
+genre_genre_id, price)
+values(2, 'Harry Potter And The Chamber of Secrets', 'Best Book Two', 4.1, 3, 2,
+ 300
+);
+
+Insert into book (book_id, title, description, rating, author_author_id,
+genre_genre_id, price)
+values(3, 'BearTown', 'An Ice Hockey Small Town', 4.3, 5, 4, 450);

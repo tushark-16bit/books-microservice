@@ -2,6 +2,7 @@ package com.tk16.microsrevices.microserviceone.application;
 
 import com.tk16.microsrevices.microserviceone.core.GenreFacade;
 import com.tk16.microsrevices.microserviceone.core.model.Author;
+import com.tk16.microsrevices.microserviceone.core.model.Book;
 import com.tk16.microsrevices.microserviceone.core.model.Genre;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,14 @@ public class GenreController {
     }
 
     @ResponseStatus(HttpStatus.OK) @GetMapping("/user/genre/{id}")
-    public Genre getGenreById(@RequestParam Long id) {
+    public Genre getGenreById(@PathVariable Long id) {
         return genreFacade.findGenreById(id);
+    }
+
+    @ResponseStatus(HttpStatus.OK) @GetMapping("/user/genre/{id}/book")
+    public List<Book> getBooksByGenreId(@PathVariable Long id) {
+        var foundGenre = genreFacade.findGenreById(id);
+        if(foundGenre == null) throw new RuntimeException("Not found");
+        return foundGenre.getBooks();
     }
 }
