@@ -1,17 +1,15 @@
 package com.tk16.microsrevices.microserviceone.core.ports;
 
 import com.tk16.microsrevices.microserviceone.core.model.Book;
-import com.tk16.microsrevices.microserviceone.core.model.Genre;
-
 import java.util.List;
 
 public interface BookDatabase {
 
-    Book save(Book book);
+  Book save(Book book);
 
-    List<Book> findAll();
+  List<Book> findAll();
 
-    Book findById(Long id);
+  Book findById(Long id);
 
-    List<Book> findByName(String name);
+  List<Book> findByName(String name);
 }
