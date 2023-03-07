@@ -23,7 +23,12 @@ import java.util.List;
         return bookFacade.addBook(book);
     }
 
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/user/book/{id}") public Book findById(@PathVariable Long id) {
         return bookFacade.findById(id);
+    }
+
+    @GetMapping(value = "/user/book", params = {"bookName"}) public List<Book> findBooksByName(@RequestParam String bookName) {
+        return bookFacade.findByName(bookName);
     }
 }

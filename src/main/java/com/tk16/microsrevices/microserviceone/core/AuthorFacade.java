@@ -22,7 +22,9 @@ public class AuthorFacade {
     }
 
     public Author findAuthorById(Long id) {
-        return database.findById(id);
+        var foundAuthor = database.findById(id);
+        if (foundAuthor==null) throw new NoSuchElementException();
+        return foundAuthor;
     }
 
     public List<Book> getBooksByAuthorId(Long id) {

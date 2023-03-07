@@ -22,7 +22,9 @@ public class GenreFacade {
         }
 
         public Genre findGenreById(Long id) {
-            return database.findById(id);
+            var foundGenre = database.findById(id);
+            if(foundGenre == null) throw new RuntimeException("Not found");
+            return foundGenre;
         }
 
         public List<Book> findBooksByGenreId(Long id) {

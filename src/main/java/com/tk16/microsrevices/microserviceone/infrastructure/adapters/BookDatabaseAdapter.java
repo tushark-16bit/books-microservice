@@ -1,7 +1,6 @@
 package com.tk16.microsrevices.microserviceone.infrastructure.adapters;
 
 import com.tk16.microsrevices.microserviceone.core.model.Book;
-import com.tk16.microsrevices.microserviceone.core.model.Genre;
 import com.tk16.microsrevices.microserviceone.core.ports.BookDatabase;
 import com.tk16.microsrevices.microserviceone.infrastructure.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +26,6 @@ public class BookDatabaseAdapter implements BookDatabase {
     }
 
     @Override public List<Book> findByName(String name) {
-        return bookRepository.findByTitleContaining(name);
+        return bookRepository.findByTitleContainingIgnoreCase(name);
     }
 }

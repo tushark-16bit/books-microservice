@@ -11,8 +11,11 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.List;
+
 import static org.mockito.Mockito.when;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -54,6 +57,24 @@ class AuthorControllerTest {
                 .andExpectAll(
                         status().isBadRequest(),
                         content().contentType(MediaType.APPLICATION_JSON_VALUE)
+                );
+    }
+
+    @Test
+    void getAllUsers_Success() throws Exception {
+        when(facade.findAllAuthors())
+                .thenReturn(List.of(
+                        new Author(1, "Tushar"),
+                        new Author(2, "J K Rowling")
+                ));
+        mockMvc.perform(
+                get("/user/author")
+                        .accept(MediaType.APPLICATION_JSON)
+        )
+                .andExpectAll(
+                        status().isOk(),
+                        content().contentType(MediaType.APPLICATION_JSON_VALUE),
+                        jsonPath("$.[0].authorId").exists()
                 );
     }
 }
