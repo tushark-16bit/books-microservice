@@ -1,91 +1,98 @@
 package com.tk16.microsrevices.microserviceone.core.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-
 import java.math.BigDecimal;
 
-@Entity public class Book {
+@Entity
+public class Book {
 
-    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE) private long bookId;
-    @Size(min = 2, max = 50)
-    private String title;
-    @Size(min=5, max = 50)
-    private String description;
-    @ManyToOne(fetch = FetchType.EAGER) private Author author;
-    @ManyToOne(fetch = FetchType.EAGER) private Genre genre;
-    @NotBlank
-    @Positive
-    private double rating;
-    @NotBlank
-    @Positive
-    private BigDecimal price;
+  @Id
+  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  private long bookId;
 
-    public Book() {
-    }
+  @Size(min = 2, max = 50)
+  private String title;
 
-    public Book(String title, String description, double rating,
-                BigDecimal price) {
-        this.title = title;
-        this.description = description;
-        this.rating = rating;
-        this.price = price;
-    }
+  @Size(min = 5, max = 50)
+  private String description;
 
-    public long getBookId() {
-        return bookId;
-    }
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "author_id")
+  @NotNull
+  private Author author;
 
-    public void setBookId(long bookId) {
-        this.bookId = bookId;
-    }
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "genre_id")
+  @NotNull
+  private Genre genre;
 
-    public String getTitle() {
-        return title;
-    }
+  @Positive private double rating;
+  @Positive private BigDecimal price;
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+  public Book() {}
 
-    public String getDescription() {
-        return description;
-    }
+  public Book(Long bookId, String title, String description, double rating, BigDecimal price) {
+    this.bookId = bookId;
+    this.title = title;
+    this.description = description;
+    this.rating = rating;
+    this.price = price;
+  }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+  public long getBookId() {
+    return bookId;
+  }
 
-    public Author getAuthor() {
-        return author;
-    }
+  public void setBookId(long bookId) {
+    this.bookId = bookId;
+  }
 
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
+  public String getTitle() {
+    return title;
+  }
 
-    public Genre getGenre() {
-        return genre;
-    }
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
-    public void setGenre(Genre genre) {
-        this.genre = genre;
-    }
+  public String getDescription() {
+    return description;
+  }
 
-    public double getRating() {
-        return rating;
-    }
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-    public void setRating(double rating) {
-        this.rating = rating;
-    }
+  public Author getAuthor() {
+    return author;
+  }
 
-    public BigDecimal getPrice() {
-        return price;
-    }
+  public void setAuthor(Author author) {
+    this.author = author;
+  }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
+  public Genre getGenre() {
+    return genre;
+  }
+
+  public void setGenre(Genre genre) {
+    this.genre = genre;
+  }
+
+  public double getRating() {
+    return rating;
+  }
+
+  public void setRating(double rating) {
+    this.rating = rating;
+  }
+
+  public BigDecimal getPrice() {
+    return price;
+  }
+
+  public void setPrice(BigDecimal price) {
+    this.price = price;
+  }
 }
