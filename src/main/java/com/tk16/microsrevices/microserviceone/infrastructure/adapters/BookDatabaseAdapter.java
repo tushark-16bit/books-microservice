@@ -23,14 +23,10 @@ public class BookDatabaseAdapter implements BookDatabase {
     }
 
     @Override public Book findById(Long id) {
-        return null;
+        return bookRepository.findById(id).orElse(null);
     }
 
-    @Override public List<Book> findByGenre(Genre genre) {
-        return bookRepository.findAllByGenre(genre);
-    }
-
-    @Override public List<Book> findByAuthor(Long authorId) {
-        return null;
+    @Override public List<Book> findByName(String name) {
+        return bookRepository.findByTitleContaining(name);
     }
 }

@@ -13,7 +13,5 @@ public interface BookDatabase {
 
     Book findById(Long id);
 
-    List<Book> findByGenre(Genre genre);
-
-    List<Book> findByAuthor(Long authorId);
+    List<Book> findByName(String name);
 }

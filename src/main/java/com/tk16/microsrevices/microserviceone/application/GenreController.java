@@ -36,8 +36,6 @@ public class GenreController {
 
     @ResponseStatus(HttpStatus.OK) @GetMapping("/user/genre/{id}/book")
     public List<Book> getBooksByGenreId(@PathVariable Long id) {
-        var foundGenre = genreFacade.findGenreById(id);
-        if(foundGenre == null) throw new RuntimeException("Not found");
-        return foundGenre.getBooks();
+        return genreFacade.findBooksByGenreId(id);
     }
 }

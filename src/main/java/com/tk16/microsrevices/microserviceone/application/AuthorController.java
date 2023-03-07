@@ -33,8 +33,6 @@ import java.util.List;
 
     @ResponseStatus(HttpStatus.OK) @GetMapping("/user/author/{id}/book")
     public List<Book> getBooksByAuthorId(@PathVariable Long id) {
-        var author = authorFacade.findAuthorById(id);
-        if(author==null) throw new RuntimeException("No such author found");
-        return author.getAuthoredBooks();
+        return authorFacade.getBooksByAuthorId(id);
     }
 }

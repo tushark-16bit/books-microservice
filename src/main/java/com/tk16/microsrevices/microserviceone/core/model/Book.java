@@ -2,17 +2,24 @@ package com.tk16.microsrevices.microserviceone.core.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;
 
 @Entity public class Book {
 
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE) private long bookId;
+    @Size(min = 2, max = 50)
     private String title;
+    @Size(min=5, max = 50)
     private String description;
     @ManyToOne(fetch = FetchType.EAGER) private Author author;
     @ManyToOne(fetch = FetchType.EAGER) private Genre genre;
+    @NotBlank
+    @Positive
     private double rating;
+    @NotBlank
+    @Positive
     private BigDecimal price;
 
     public Book() {

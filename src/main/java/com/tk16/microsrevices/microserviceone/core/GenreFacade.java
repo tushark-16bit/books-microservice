@@ -1,5 +1,6 @@
 package com.tk16.microsrevices.microserviceone.core;
 
+import com.tk16.microsrevices.microserviceone.core.model.Book;
 import com.tk16.microsrevices.microserviceone.core.model.Genre;
 import com.tk16.microsrevices.microserviceone.core.ports.GenreDatabase;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,11 @@ public class GenreFacade {
 
         public Genre findGenreById(Long id) {
             return database.findById(id);
+        }
+
+        public List<Book> findBooksByGenreId(Long id) {
+            var foundGenre = database.findById(id);
+            if(foundGenre == null) throw new RuntimeException("Not found");
+            return foundGenre.getBooks();
         }
 }
