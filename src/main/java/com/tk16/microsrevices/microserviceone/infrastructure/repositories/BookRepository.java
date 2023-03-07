@@ -1,11 +1,10 @@
 package com.tk16.microsrevices.microserviceone.infrastructure.repositories;
 
 import com.tk16.microsrevices.microserviceone.core.model.Book;
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BookRepository extends JpaRepository<Book, Long> {
 
-    List<Book> findByTitleContainingIgnoreCase(String name);
+  List<Book> findByTitleContainingIgnoreCase(String name);
 }

@@ -1,42 +1,161 @@
-INSERT INTO author (author_id, full_name)
-VALUES(10001, 'Chetan Bhagat');
+INSERT
+    INTO
+        author(
+            author_id,
+            full_name
+        )
+    VALUES(
+        10001,
+        'Chetan Bhagat'
+    );
 
-INSERT INTO author (author_id, full_name)
-VALUES(10002, 'Dan Brown');
+INSERT
+    INTO
+        author(
+            author_id,
+            full_name
+        )
+    VALUES(
+        10002,
+        'Dan Brown'
+    );
 
-INSERT INTO author (author_id, full_name)
-VALUES(10003, 'J K Rowling');
+INSERT
+    INTO
+        author(
+            author_id,
+            full_name
+        )
+    VALUES(
+        10003,
+        'J K Rowling'
+    );
 
-INSERT INTO author (author_id, full_name)
-VALUES(10004, 'Blake Crouch');
+INSERT
+    INTO
+        author(
+            author_id,
+            full_name
+        )
+    VALUES(
+        10004,
+        'Blake Crouch'
+    );
 
-INSERT INTO author (author_id, full_name)
-VALUES(10005, 'Frederick Bachman');
+INSERT
+    INTO
+        author(
+            author_id,
+            full_name
+        )
+    VALUES(
+        10005,
+        'Frederick Bachman'
+    );
 
-Insert into genre (genre_id, genre_name)
-values(1, 'Thriller');
+INSERT
+    INTO
+        genre(
+            genre_id,
+            genre_name
+        )
+    VALUES(
+        20001,
+        'Thriller'
+    );
 
-Insert into genre (genre_id, genre_name)
-values(2, 'Fantasy');
+INSERT
+    INTO
+        genre(
+            genre_id,
+            genre_name
+        )
+    VALUES(
+        20002,
+        'Fantasy'
+    );
 
-Insert into genre (genre_id, genre_name)
-values(3, 'Sci-Fi');
+INSERT
+    INTO
+        genre(
+            genre_id,
+            genre_name
+        )
+    VALUES(
+        20003,
+        'Sci-Fi'
+    );
 
-Insert into genre (genre_id, genre_name)
-values(4, 'Literature');
+INSERT
+    INTO
+        genre(
+            genre_id,
+            genre_name
+        )
+    VALUES(
+        20004,
+        'Literature'
+    );
 
-Insert into book (book_id, title, description, rating, author_author_id,
-genre_genre_id, price)
-values(1, 'Harry Potter And The Philosopher Stone', 'Best Book', 4, 10003, 2,
-200);
+INSERT
+    INTO
+        book(
+            book_id,
+            title,
+            description,
+            rating,
+            author_id,
+            genre_id,
+            price
+        )
+    VALUES(
+        30001,
+        'Harry Potter And The Philosopher Stone',
+        'Best Book',
+        4,
+        10003,
+        20002,
+        200
+    );
 
-Insert into book (book_id, title, description, rating, author_author_id,
-genre_genre_id, price)
-values(2, 'Harry Potter And The Chamber of Secrets', 'Best Book Two', 4.1,
-10003, 2,
- 300
-);
+INSERT
+    INTO
+        book(
+            book_id,
+            title,
+            description,
+            rating,
+            author_id,
+            genre_id,
+            price
+        )
+    VALUES(
+        30002,
+        'Harry Potter And The Chamber of Secrets',
+        'Best Book Two',
+        4.1,
+        10003,
+        20002,
+        300
+    );
 
-Insert into book (book_id, title, description, rating, author_author_id,
-genre_genre_id, price)
-values(3, 'BearTown', 'An Ice Hockey Small Town', 4.3, 10005, 4, 450);
+INSERT
+    INTO
+        book(
+            book_id,
+            title,
+            description,
+            rating,
+            author_id,
+            genre_id,
+            price
+        )
+    VALUES(
+        30003,
+        'BearTown',
+        'An Ice Hockey Small Town',
+        4.3,
+        10005,
+        20004,
+        450
+    );

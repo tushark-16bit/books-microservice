@@ -1,5 +1,6 @@
 package com.tk16.microsrevices.microserviceone.application.exception;
 
+import java.time.LocalDateTime;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -9,26 +10,23 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.time.LocalDateTime;
-
 @ControllerAdvice
 public class ExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(
-            MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+  @Override
+  protected ResponseEntity<Object> handleMethodArgumentNotValid(
+      MethodArgumentNotValidException ex,
+      HttpHeaders headers,
+      HttpStatusCode status,
+      WebRequest request) {
 
-        String finalMessage =
-                "Total Errors: ".concat(String.valueOf(ex.getFieldErrorCount())) + "||";
-        for(var message: ex.getFieldErrors()) {
-            finalMessage =
-                    finalMessage.concat(message.getField()+": "+message.getDefaultMessage()).concat("||");
-        }
-        ErrorDetails details = new ErrorDetails(
-                LocalDateTime.now(),
-                finalMessage,
-                request.getDescription(true)
-        );
-        return new ResponseEntity<>(details, HttpStatus.BAD_REQUEST);
+    String finalMessage = "Total Errors: ".concat(String.valueOf(ex.getFieldErrorCount())) + "||";
+    for (var message : ex.getFieldErrors()) {
+      finalMessage =
+          finalMessage.concat(message.getField() + ": " + message.getDefaultMessage()).concat("||");
     }
+    ErrorDetails details =
+        new ErrorDetails(LocalDateTime.now(), finalMessage, request.getDescription(true));
+    return new ResponseEntity<>(details, HttpStatus.BAD_REQUEST);
+  }
 }

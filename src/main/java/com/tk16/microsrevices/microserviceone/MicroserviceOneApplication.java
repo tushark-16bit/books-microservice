@@ -2,13 +2,11 @@ package com.tk16.microsrevices.microserviceone;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 public class MicroserviceOneApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MicroserviceOneApplication.class, args);
-	}
-
+  public static void main(String[] args) {
+    SpringApplication.run(MicroserviceOneApplication.class, args);
+  }
 }
