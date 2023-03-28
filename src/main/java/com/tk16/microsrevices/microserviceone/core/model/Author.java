@@ -17,7 +17,7 @@ public class Author {
   @Size(min = 2, max = 30)
   private String fullName;
 
-  @OneToMany(mappedBy = "author")
+  @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
   @JsonIgnore
   private List<Book> authoredBooks;
 

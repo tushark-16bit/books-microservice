@@ -17,12 +17,12 @@ public class Book {
   @Size(min = 5, max = 50)
   private String description;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "author_id")
   @NotNull
   private Author author;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "genre_id")
   @NotNull
   private Genre genre;

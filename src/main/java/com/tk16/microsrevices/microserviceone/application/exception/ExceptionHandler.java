@@ -30,3 +30,5 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
     return new ResponseEntity<>(details, HttpStatus.BAD_REQUEST);
   }
 }
+
+// TODO: add no such element exception/ custom exception for not found in db
