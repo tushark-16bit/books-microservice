@@ -17,9 +17,7 @@ public class BookFacade {
   }
 
   public Book findById(Long id) {
-    var foundBook = bookDatabase.findById(id);
-    if (foundBook == null) throw new NoSuchElementException();
-    return foundBook;
+    return bookDatabase.findBookById(id);
   }
 
   public Book addBook(Book book) {
@@ -27,6 +25,6 @@ public class BookFacade {
   }
 
   public List<Book> findByName(String name) {
-    return bookDatabase.findByName(name);
+    return bookDatabase.findBookByName(name);
   }
 }

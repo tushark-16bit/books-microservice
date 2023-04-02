@@ -55,10 +55,8 @@ public class Author {
   @Override
   public boolean equals(Object obj) {
 
-    if (obj instanceof Author) {
-      var object = (Author) obj;
-      if (object.getAuthorId() == this.authorId && object.fullName.equals(this.fullName))
-        return true;
+    if (obj instanceof Author object) {
+      return object.getAuthorId() == this.authorId && object.fullName.equals(this.fullName);
     }
     return false;
   }

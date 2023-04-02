@@ -22,14 +22,12 @@ public class AuthorFacade {
   }
 
   public Author findAuthorById(Long id) {
-    var foundAuthor = database.findById(id);
-    if (foundAuthor == null) throw new NoSuchElementException();
-    return foundAuthor;
+    return database.findAuthorById(id);
   }
 
+  // TODO: test this
   public List<Book> getBooksByAuthorId(Long id) {
-    var foundAuthor = database.findById(id);
-    if (foundAuthor == null) throw new NoSuchElementException();
+    var foundAuthor = database.findAuthorById(id);
     return foundAuthor.getAuthoredBooks();
   }
 }

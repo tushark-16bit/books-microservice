@@ -21,14 +21,12 @@ public class GenreFacade {
   }
 
   public Genre findGenreById(Long id) {
-    var foundGenre = database.findById(id);
-    if (foundGenre == null) throw new RuntimeException("Not found");
-    return foundGenre;
+    return database.findGenreById(id);
   }
 
+  //TODO: Test this
   public List<Book> findBooksByGenreId(Long id) {
-    var foundGenre = database.findById(id);
-    if (foundGenre == null) throw new RuntimeException("Not found");
+    var foundGenre = database.findGenreById(id);
     return foundGenre.getBooks();
   }
 }

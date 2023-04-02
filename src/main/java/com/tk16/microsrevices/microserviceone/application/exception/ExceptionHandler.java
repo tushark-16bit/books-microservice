@@ -1,7 +1,7 @@
 package com.tk16.microsrevices.microserviceone.application.exception;
 
 import java.time.LocalDateTime;
-import org.springframework.http.HttpHeaders;
+import jakarta.persistence.EntityNotFoundException;import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +29,14 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
         new ErrorDetails(LocalDateTime.now(), finalMessage, request.getDescription(true));
     return new ResponseEntity<>(details, HttpStatus.BAD_REQUEST);
   }
-}
 
-// TODO: add no such element exception/ custom exception for not found in db
+  @org.springframework.web.bind.annotation.ExceptionHandler(value = EntityNotFoundException.class)
+  protected ResponseEntity<Object> handleException(EntityNotFoundException ex
+          , WebRequest request) {
+
+    ErrorDetails details =
+            new ErrorDetails(LocalDateTime.now(), ex.getMessage(),
+                    request.getDescription(true));
+    return new ResponseEntity<>(details, HttpStatus.BAD_REQUEST);
+  }
+}
