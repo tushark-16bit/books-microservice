@@ -6,7 +6,12 @@ import com.tk16.microsrevices.books.application.ports.in.UpdateBookUseCase;
 import com.tk16.microsrevices.books.application.ports.in.models.CreateBookCommand;
 import com.tk16.microsrevices.books.application.ports.in.models.DeleteBookCommand;
 import com.tk16.microsrevices.books.application.ports.in.models.UpdateBookCommand;
+import com.tk16.microsrevices.books.domain.Book;
+import io.github.resilience4j.bulkhead.annotation.Bulkhead;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/update")
+@RateLimiter(name = "default")
+@Bulkhead(name = "default")
 public class UpdateBookController {
 
   private final CreateBookUseCase createBookUseCase;
@@ -32,8 +39,10 @@ public class UpdateBookController {
   }
 
   @PostMapping
-  public void createNewBook(@Valid @RequestBody CreateBookCommand createBookCommand) {
-    createBookUseCase.createBook(createBookCommand);
+  public ResponseEntity<Book> createNewBook(
+      @Valid @RequestBody CreateBookCommand createBookCommand) {
+    var bookCreated = createBookUseCase.createBook(createBookCommand);
+    return new ResponseEntity<>(bookCreated, HttpStatus.CREATED);
   }
 
   @PatchMapping
