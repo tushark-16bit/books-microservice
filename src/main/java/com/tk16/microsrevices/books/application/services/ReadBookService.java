@@ -1,7 +1,6 @@
 package com.tk16.microsrevices.books.application.services;
 
 import com.tk16.microsrevices.books.application.ports.in.ReadBookUseCase;
-import com.tk16.microsrevices.books.application.ports.in.models.ReadBookQuery;
 import com.tk16.microsrevices.books.application.ports.out.LoadBookPort;
 import com.tk16.microsrevices.books.domain.Book;
 import com.tk16.microsrevices.common.UseCase;
@@ -22,10 +21,9 @@ public class ReadBookService implements ReadBookUseCase {
   }
 
   @Override
-  public Book readBook(ReadBookQuery readBookQuery) {
-    var searchForId = readBookQuery.getBookId();
-    logger.info("Book Id received: {}", searchForId);
-    return loadBookPort.validateAndGetBook(searchForId);
+  public Book readBook(Long bookId) {
+    logger.info("Book Id received: {}", bookId);
+    return loadBookPort.validateAndGetBook(bookId);
   }
 
   @Override

@@ -17,9 +17,10 @@ public class UpdateBookAdapter implements UpdateBookPort {
   }
 
   @Override
-  public void createBook(Book book) {
+  public Book createBook(Book book) {
     var bookToBePersisted = BookMapper.mapBookToEntity(book);
-    repository.save(bookToBePersisted);
+    var persistedBook = repository.save(bookToBePersisted);
+    return BookMapper.mapEntityToBook(persistedBook);
   }
 
   @Override

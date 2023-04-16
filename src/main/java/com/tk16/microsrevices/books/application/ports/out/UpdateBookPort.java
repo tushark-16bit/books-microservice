@@ -5,7 +5,7 @@ import com.tk16.microsrevices.books.domain.Book;
 public interface UpdateBookPort {
 
   // create
-  void createBook(Book book);
+  Book createBook(Book book);
 
   // update
   void updateBook(Book book);
