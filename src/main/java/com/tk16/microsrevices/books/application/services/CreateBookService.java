@@ -16,10 +16,10 @@ class CreateBookService implements CreateBookUseCase {
   }
 
   @Override
-  public void createBook(CreateBookCommand createBookCommand) {
+  public Book createBook(CreateBookCommand createBookCommand) {
 
     var bookToBeSaved = CreateBookCommandMapper.mapToBook(createBookCommand);
-    updateBookPort.createBook(bookToBeSaved);
+    return updateBookPort.createBook(bookToBeSaved);
   }
 }
 
