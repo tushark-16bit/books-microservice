@@ -12,6 +12,7 @@ import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/update")
 @RateLimiter(name = "default")
 @Bulkhead(name = "default")
+@PreAuthorize("hasAuthority('OIDC_USER')")
 public class UpdateBookController {
 
   private final CreateBookUseCase createBookUseCase;
