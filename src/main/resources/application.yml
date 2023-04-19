@@ -32,7 +32,7 @@ spring:
       detection-strategy: annotated
 
 springdoc:
-  packagesToScan: com.tk16.microsrevices.microserviceone.application
+  packagesToScan: com.tk16.microsrevices
 
 resilience4j:
   retry:
